@@ -1,0 +1,33 @@
+﻿
+
+  <div class="container-fluid">
+    <div  class="d-flex">
+      <!-- Card -->
+      <mdb-card *ngFor="let capitulo of capitulos"
+        style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg')"
+        class="card-image mb-3 mx-2"
+      >
+        <!-- Content -->
+        <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+          <div style=" width: 100%;word-wrap: break-word;">
+            <h5 class="{{capitulo.cor}}-text">
+              <mdb-icon fas icon="chart-pie"></mdb-icon>
+              {{capitulo.titulo}}
+            </h5>
+            <h3 class="font-weight-bold"><strong>{{capitulo.subtitulo}}</strong></h3>
+            <p style="white-space: pre-line;">
+              {{capitulo.resumo}}
+            </p>
+            <a mdbBtn color="{{capitulo.cor}}" class="waves-light" mdbWavesEffect>
+              <mdb-icon far icon="clone" class="left"></mdb-icon>
+              View project</a
+            >
+          </div>
+        </div>
+        <!-- Content -->
+      </mdb-card>
+      <!-- Card -->
+    </div>
+  </div>
+
+    
