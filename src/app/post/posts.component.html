@@ -1,0 +1,46 @@
+﻿   <div class="container-fluid">
+    <div  class="d-flex">
+     
+<!--Card-->
+<mdb-card class="card-image mb-3 mx-2" *ngFor="let post of posts" >
+
+ 
+  <!--Card image-->
+  <div class="view overlay waves-light" mdbWavesEffect>
+    <mdb-card-img src="{{ environment + (post.imagem[0].url) }}"></mdb-card-img>
+    <a>
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+  <!--/.Card image-->
+
+  <!--Card content-->
+  <mdb-card-body>
+ 
+
+    <!--Title-->
+    <mdb-card-title>
+      <h4>{{post.titulo}}</h4>
+    </mdb-card-title>
+
+    <hr>
+
+    <!--Text-->
+    <mdb-card-text>
+      {{post.resumo}}
+    </mdb-card-text>
+
+    <a (click)="btnClick(post.id)" class="link-text" >
+      <h5 class="waves-light" mdbWavesEffect>Leia Mais
+        <mdb-icon fas icon="chevron-right" class="waves-light" mdbWavesEffect></mdb-icon>
+      </h5>
+    </a>
+  </mdb-card-body>
+  <!--/.Card content-->
+</mdb-card>
+<!--/.Card-->
+      <!-- Card -->
+    </div>
+  </div>
+
+    

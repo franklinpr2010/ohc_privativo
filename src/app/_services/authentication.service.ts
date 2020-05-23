@@ -21,24 +21,33 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-
-
-        console.log(username);
-        console.log(password);
         return this.http.post<any>(`${environment.apiUrl}/auth/local`, { "identifier": username, "password": password })
             .pipe(map(response => {
-                console.log(response);
-                const user = new User();
-                user.id = response.user.id;
-                user.username = response.user.email;
-                user.password = response.user.password;
-                user.token = response.jwt
-                user.blocked = response.user.blocked;
-                console.log(user);
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
+                console.log(response.jwt);
+                const user = new User(response.user.id,
+                    response.user.username,
+                    response.user.firstName,
+                    response.user.lastName,
+                    response.user.blocked,
+                    response.user.email,
+                    response.user.nivel,
+                    response.user.telefone,
+                    response.jwt,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    response.user.lote,
+                    response.user.usuario_capitulos,
+                    response.user.confirmed);
+                    console.log(user);
+               
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('token', user.token);
+                    this.currentUserSubject.next(user);
+                    return user;
             }), 
             catchError(e => throwError(e)));
             
@@ -52,7 +61,7 @@ export class AuthenticationService {
               'Authorization', 'Bearer ' + localStorage['token']
           );
         }
-      
+console.log(localStorage['token']);
       return { headers: httpHeaders };
     }
 

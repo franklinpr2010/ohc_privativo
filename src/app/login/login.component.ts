@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '@app/_services';
 import { Cadastro } from '@app/autenticacao/cadastro/models/cadastro.model';
 import { CadastrarService } from '@app/autenticacao/cadastro/services/cadastro-.service';
+import { User } from '@app/_models';
 
 @Component({ templateUrl: 'login.component.html',
   styleUrls: ['./login.component.css'] })
@@ -18,6 +19,8 @@ export class LoginComponent implements OnInit {
     error = '';
     sucesso = true;
     message = '';
+    user:User;
+
 
     constructor(
         private formBuilder: FormBuilder,
@@ -66,7 +69,9 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+
+                      this.router.navigate([this.returnUrl]);
+                    
                 },
                 error => {
                     console.log(error);
@@ -94,6 +99,14 @@ export class LoginComponent implements OnInit {
       get signupFormModalTexto() {
         return this.validatingForm.get('signupFormModalTexto');
       }
+
+      registrar() {
+        this.router.navigate(['/cadastro'])
+    }
+
+    esqueci() {
+      this.router.navigate(['/esqueci'])
+    }
 
       
 

@@ -1,0 +1,86 @@
+
+<section id="cover" class="min-vh-100">
+  <div id="cover-caption">
+      <div class="container">
+          <div class="row text-white">
+              <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                  <h1 class="display-4 py-2 text-truncate">O.H.C.</h1>
+                  <div class="px-2">
+<form [formGroup]="validatingForm" class="justify-content-center">
+  <p class="h4 mb-4"></p>
+
+<h3>Digite seu E-mail.</h3>
+
+
+<div *ngIf="message">
+  <div [ngClass]="sucesso ? 'alert alert-success' : 'alert alert-danger'" role="alert">{{ message }}</div>
+   </div>
+
+
+
+ <div class="form-group">
+<input [formControl]="signupFormModalEmail" formControlName="signupFormModalEmail" type="email"  id="signupFormModalEmail" placeholder="Email" class="form-control rounded-0" 
+mdbInput mdbValidate>
+<div *ngIf="f.signupFormModalEmail.touched && f.signupFormModalEmail.invalid" class="help-block">
+  <div style="color: red;" *ngIf="f.signupFormModalEmail.errors.required">Email é um campo requerido.</div>
+  <div style="color: red;" *ngIf="f.signupFormModalEmail.errors.email">Por favor digite um email válido.</div>
+</div>
+</div>
+
+
+  <br/>
+<div class="d-flex justify-content-between">
+<div class="">
+<button (click)="enviarEmail()" [disabled]="!validatingForm.valid" mdbWavesEffect class="btn btn-info btn-block">
+  
+  Enviar
+</button>
+</div>
+<div class="">   
+ <a type="button" class="btn btn-primary" href="/login" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+  mdbWavesEffect>Voltar
+</a>   
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<style>
+
+#cover {
+  background: #222 url('https://santaritacampinas.com.br/wp-content/uploads/2017/01/x2-tunel.png') center center no-repeat;
+  background-size: cover;
+height: 100%;
+width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#cover-caption {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+form:before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.9);
+  z-index: -1;
+  border-radius: 10px;
+}
+
+</style>

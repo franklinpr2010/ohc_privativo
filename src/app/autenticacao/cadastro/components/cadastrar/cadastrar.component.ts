@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cadastro } from '../../models/cadastro.model';
 import { CadastrarService } from '../../services/cadastro-.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
 import { Compl } from '../../models/compl.model';
 
 
@@ -61,6 +61,10 @@ export class CadastrarComponent implements OnInit {
   get f(){
     return this.validatingForm.controls;
   }
+
+
+ 
+  
   
    submit(){
 

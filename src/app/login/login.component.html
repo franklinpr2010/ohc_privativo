@@ -10,7 +10,7 @@
             <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="username">Usuário</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <input  type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                     <div *ngIf="submitted && f.username.errors" class="help-block">
                         <div *ngIf="f.username.errors.required">Usuário é requerido</div>
                     </div>
@@ -32,12 +32,13 @@
                     </button>
                 </div>
                     <div class="">   
-                   <a type="button" href="/cadastro" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+                   <button  (click)="registrar()" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
                         mdbWavesEffect>Registrar
-                    </a>   
+                    </button>   
                     </div>
                 </div>
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                <a (click)="esqueci()">Esqueci Minha Senha</a>
             </form>
         </div>
     </div>

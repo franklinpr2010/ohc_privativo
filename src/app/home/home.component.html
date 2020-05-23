@@ -1,12 +1,12 @@
-﻿
-
-  <div class="container-fluid">
+﻿   <div class="container-fluid">
     <div  class="d-flex">
       <!-- Card -->
-      <mdb-card *ngFor="let capitulo of capitulos"
-        style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg')"
+      
+      <mdb-card *ngFor="let capitulo of capitulosUsuario"
+        style="background-image: url({{ environment + (capitulo.imagem[0].url) }})"
         class="card-image mb-3 mx-2"
       >
+      
         <!-- Content -->
         <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
           <div style=" width: 100%;word-wrap: break-word;">
@@ -18,10 +18,9 @@
             <p style="white-space: pre-line;">
               {{capitulo.resumo}}
             </p>
-            <a mdbBtn color="{{capitulo.cor}}" class="waves-light" mdbWavesEffect>
+            <button mdbBtn (click)="btnClick(capitulo.id);" color="{{capitulo.cor}}" class="waves-light">
               <mdb-icon far icon="clone" class="left"></mdb-icon>
-              View project</a
-            >
+              Entrar</button>
           </div>
         </div>
         <!-- Content -->

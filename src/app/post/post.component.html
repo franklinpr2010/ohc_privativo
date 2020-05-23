@@ -1,0 +1,34 @@
+﻿   <div class="container-fluid">
+    <div  class="d-flex">
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+  
+          <!-- Title -->
+          <h1 class="mt-4">{{post.titulo}}</h1>
+  
+  
+          <hr>
+  
+    
+  
+          <hr>
+  
+          <!-- Preview Image -->
+          <img class="img-fluid rounded" src="{{ environment + (post.imagem[0].url) }}" alt="">
+  
+          <hr>
+          <p>
+          <markdown ngPreserveWhitespaces>
+          {{post.texto}}
+        </markdown>
+        </p>
+        </div>
+        </div>
+        </div>
+
+
+  </div>
+
+    

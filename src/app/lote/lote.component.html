@@ -1,0 +1,26 @@
+﻿<div class="container-fluid">
+  <div  class="d-flex">
+    <!-- Card -->
+      <table class="table table-striped table-responsive-md btn-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Descrição</th>
+            <th>Lote</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+            <tr *ngFor="let lote of lotes">
+              <th scope="row">{{lote.id}}</th>
+              <td>Lote {{lote.numero}}</td>
+              <td>{{lote.descricao}}</td>
+              <td>  <a *ngIf="user.lote >= lote.numero"  mdbBtn color="indigo" href="{{ environment + (lote.arquivo[0].url) }}"  size="sm" mdbWavesEffect type="button" class="m-0">Download</a></td>
+            
+            </tr>
+         
+        </tbody>
+      </table>
+</div>
+</div>

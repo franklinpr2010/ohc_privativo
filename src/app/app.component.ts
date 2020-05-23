@@ -6,12 +6,12 @@ import { User } from './_models';
 
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
-export class AppComponent {
+export class AppComponent  {
     currentUser: User;
  
 
     ngOnInit() {
-       
+        //this.router.navigate([''])
     }
    
 
@@ -21,6 +21,15 @@ export class AppComponent {
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
+
+    perfil() {
+        this.router.navigate(['/perfil'])
+    }
+
+    posts() {
+        this.router.navigate(['/post'])
+    }
+
 
     logout() {
         this.authenticationService.logout();

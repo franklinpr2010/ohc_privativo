@@ -1,4 +1,4 @@
-import { Compl } from './compl.model';
+
 
 export class Cadastro {
 
@@ -8,6 +8,7 @@ export class Cadastro {
 		public email: string,
 		public password: string,
 		public telefone: string,
-		public texto: string) {}
+		public texto: string,
+		public confirmed: boolean = false) {}
 
 }
