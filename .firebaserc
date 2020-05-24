@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "hoc-private": {
+      "hosting": {
+        "ohc": [
+          "hoc-private"
+        ]
+      }
+    }
+  }
+}
