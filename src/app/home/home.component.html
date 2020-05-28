@@ -1,10 +1,11 @@
 ﻿   <div class="container-fluid">
-    <div  class="d-flex">
+    <div  class="row">
       <!-- Card -->
-      
-      <mdb-card *ngFor="let capitulo of capitulosUsuario"
+        <!-- Grid column -->
+      <div class="col-md-6 mb-4" *ngFor="let capitulo of capitulosUsuario">
+      <mdb-card 
         style="background-image: url({{ environment + (capitulo.imagem[0].url) }})"
-        class="card-image mb-3 mx-2 col-sm-2"
+        class="card-image mb-3 mx-2"
       >
       
         <!-- Content -->
@@ -25,6 +26,7 @@
         </div>
         <!-- Content -->
       </mdb-card>
+      </div>
       <!-- Card -->
     </div>
   </div>
