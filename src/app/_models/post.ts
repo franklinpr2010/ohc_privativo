@@ -11,6 +11,8 @@ export class Post {
     titulo: string;
     texto: string;
     imagem:Imagem;
-    capitulo: Capitulo[];
+    capitulo: Capitulo;
+    nivel: Number;
+    lote: Number;
 
 }

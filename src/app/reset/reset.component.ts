@@ -90,6 +90,7 @@ export class ResetComponent implements OnInit {
           
           console.log(err);
           if (err.status == 400) {
+         
             this.message = err.message.messages.join(' ');
            
           } else {

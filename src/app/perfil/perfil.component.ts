@@ -61,6 +61,7 @@ export class PerfilComponent implements OnInit {
           this.signupFormModalCidade.setValue(this.user.cidade);
           this.signupFormModalPrimeiroNome.setValue(this.user.firstName);
           this.signupFormModalUltimoNome.setValue(this.user.lastName);
+          
           this.fullName = this.user.firstName + ' ' + this.user.lastName;
           //console.log(this.signupFormModalUserName);
       },

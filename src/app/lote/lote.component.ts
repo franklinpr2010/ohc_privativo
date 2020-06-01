@@ -10,6 +10,8 @@ import { UsuarioCapitulo } from '@app/_models/usuariocapitulo';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Lote } from '@app/_models/lote';
 import { LoteService } from '@app/_services/lote.service';
+import {saveAs as importedSaveAs} from "file-saver";
+import { Observable } from 'rxjs';
 
 @Component({ templateUrl: 'lote.component.html' })
 export class LoteComponent implements OnInit {
@@ -40,7 +42,26 @@ export class LoteComponent implements OnInit {
          });
     }
 
-    
+    /**
+     * Fazer implementação
+     * @param idLote
+     */
+    fazerDownload(idLote) {
+        //BuscarLote
+        this.loteService.buscarLote(idLote).subscribe (
+            data => {
+                
+                console.log('lote');
+                console.log(data[0].url);
+                this.loteService.downloadFile(data[0].url).subscribe(blob => {
+                    importedSaveAs(blob.body, "palestra");
+                });
+                
+            },
+            err => {
+            }
+           );
+    }
 
 
     /**

@@ -4,6 +4,10 @@ import { Cadastro } from '../../models/cadastro.model';
 import { CadastrarService } from '../../services/cadastro-.service';
 import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
 import { Compl } from '../../models/compl.model';
+import { UsuarioCapitulo } from '@app/_models/usuariocapitulo';
+import { UserService } from '@app/_services';
+import { User } from '@app/_models';
+import { Capitulo } from '@app/_models/capitulo';
 
 
 
@@ -19,7 +23,7 @@ export class CadastrarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cadastrarService: CadastrarService,
+    private cadastrarService: CadastrarService, private userService: UserService,
 ) { 
 
 }
@@ -84,10 +88,20 @@ export class CadastrarComponent implements OnInit {
     //O subscribe retorna dois objetos, um no caso de sucesso e outro no caso de erro.
       .subscribe(
         data => {
-          console.log(cadastro);
-          const msg: string = "Realize o login para acessar o sistema.";
+          let cadastroCadastado: Cadastro = data;
+          let user: User = new User(Number(cadastroCadastado.id), cadastro.username, null, null, false,
+          cadastro.email, 1, cadastro.telefone, null, null, null, null, null, cadastro.texto, 1, null, false);
+          console.log(user);
+          let cap: Capitulo = new Capitulo();
+          cap.id = 1
+
+          let usuarioCap = new UsuarioCapitulo(null, user.username + '-Nível 1', user.id, cap.id);
+          this.cadastrarNivel(usuarioCap, cadastroCadastado);
+         
+          //Enviar e-mail
           this.sucesso = true;
           this.message = 'Usuário Registrado com sucesso!';
+          
          
         },
         err => {
@@ -98,6 +112,8 @@ export class CadastrarComponent implements OnInit {
             msg = err.message.messages.join(' ');
            
           }
+          console.log(err);
+          console.log(err[0]);
           this.message = err[0].messages[0].message;
         }
       );
@@ -105,7 +121,69 @@ export class CadastrarComponent implements OnInit {
   }
 
 
+  cadastrarNivel(usuarioCapitulo: UsuarioCapitulo, cadastro: Cadastro) {
+    this.cadastrarService.cadastrarNivel(usuarioCapitulo)
+      .subscribe(
+        data => {
+          console.log('Nível cadastrado');
+          console.log(data);
+
+          let usuarioCaps: UsuarioCapitulo[] = [] ;
+          let usuarioCapitulo: UsuarioCapitulo = data;
+          console.log(data);
+          usuarioCaps.push(usuarioCapitulo);
+
+          let user: User = new User(Number(cadastro.id), cadastro.username, null, null, false,
+          cadastro.email, 1, cadastro.telefone, null, null, null, null, null, cadastro.texto, 1, usuarioCaps, false);
+          console.log(user);
+          this.atualizarUsuario(user, cadastro);
+         
+        },
+        err => {
+          this.sucesso = false;
+          let msg: string = "Tente novamente em instantes.";
+          if (err.statusCode == 400) {
+            msg = err.message.messages.join(' ');
+          }
+          this.message = err[0].messages[0].message;
+        }
+        );
+      return false;
+  } 
+
+
+  atualizarUsuario(user: User, cadastro: Cadastro) {
+    this.userService.atualizar(user)
+      .subscribe(
+        data => {
+          console.log('Usuario atualizado');
+          console.log(data);
+          //Enviando e-mail
+          this.cadastrarService.enviarEmail(cadastro);
+        },
+        err => {
+          this.sucesso = false;
+          let msg: string = "Tente novamente em instantes.";
+          if (err.statusCode == 400) {
+            msg = err.message.messages.join(' ');
+          }
+
+          console.log( err[0]);
+          console.log( err);
+          this.message = err[0].messages[0].message;
+        }
+        );
+      return false;
+  } 
+
+
+  voltar() {
+    this.router.navigate(['/login'])
+  }
+
 
  
 
 }
+
+

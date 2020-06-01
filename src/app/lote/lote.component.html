@@ -1,4 +1,5 @@
 ﻿<div class="container-fluid">
+  <strong>Obs: Ao baixar o arquivo renomeie o .false por .rar</strong>
   <div  class="d-flex">
     <!-- Card -->
       <table class="table table-striped table-responsive-md btn-table">
@@ -16,7 +17,7 @@
               <th scope="row">{{lote.id}}</th>
               <td>Lote {{lote.numero}}</td>
               <td>{{lote.descricao}}</td>
-              <td>  <a *ngIf="user.lote >= lote.numero"  mdbBtn color="indigo" href="{{ environment + (lote.arquivo[0].url) }}"  size="sm" mdbWavesEffect type="button" class="m-0">Download</a></td>
+              <td>  <a *ngIf="user.lote >= lote.numero || user.nivel == 0"  mdbBtn color="indigo" (click)="fazerDownload(lote.id)"  size="sm" mdbWavesEffect type="button" class="m-0">Download</a></td>
             
             </tr>
          

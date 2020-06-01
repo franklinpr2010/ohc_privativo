@@ -1,13 +1,15 @@
 ﻿   <div class="container-fluid">
-    <div  class="d-flex">
-     
+    <div  class="row">
+    
+
 <!--Card-->
-<mdb-card class="card-image mb-3 mx-2" *ngFor="let post of posts" >
+<mdb-card *ngFor="let post of posts_niveis"   class="card-image mb-3 mx-2 col-3 col-sm-3"   >
 
  
   <!--Card image-->
   <div class="view overlay waves-light" mdbWavesEffect>
-    <mdb-card-img src="{{ environment + (post.imagem[0].url) }}"></mdb-card-img>
+
+    <mdb-card-img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR3PtO3gjYKF3B_v2ZPWHw5syl01XAeETupYTlHtTdkwDhHi4NJ&usqp=CAU"></mdb-card-img>
     <a>
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -34,10 +36,12 @@
       <h5 class="waves-light" mdbWavesEffect>Leia Mais
         <mdb-icon fas icon="chevron-right" class="waves-light" mdbWavesEffect></mdb-icon>
       </h5>
+
     </a>
   </mdb-card-body>
   <!--/.Card content-->
 </mdb-card>
+
 <!--/.Card-->
       <!-- Card -->
     </div>

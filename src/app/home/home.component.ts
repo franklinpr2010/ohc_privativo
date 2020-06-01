@@ -33,9 +33,13 @@ export class HomeComponent implements OnInit {
         this.usuarioCapitulos = this.user.usuario_capitulos;
          this.capituloService.getAll().pipe(first()).subscribe(capitulos => {
             this.capitulos =  capitulos;
-            this.capitulosUsuario = this.capitulos.filter(x => this.usuarioCapitulos.map(y => y.capitulo).includes(x.id));
-            console.log(this.capitulosUsuario );
-            console.log(this.capitulosUsuario );
+            if(this.user.nivel == 0) {
+                this.capitulosUsuario =  this.capitulos;
+            } else {
+                this.capitulosUsuario = this.capitulos.filter(x => this.usuarioCapitulos.map(y => y.capitulo).includes(x.id));
+            }
+            
+      
         });
 
       

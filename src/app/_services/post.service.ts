@@ -24,7 +24,8 @@ export class PostService {
      */
     buscarPostPorCapitulo(capituloId)  {
         console.log('buscarLotesPorCapitulo');
-        return this.http.get<Post[]>(environment.apiUrl  + this.PATH  + '?' + 'capitulo=' + capituloId, this.authentication.headers());
+        return this.http.get<Post[]>(environment.apiUrl  + this.PATH  + '?' + 'capitulo=' + capituloId, this.authentication.headers())
+
     }
 
     /**

@@ -17,7 +17,7 @@
 	   </div>
 	
 	<div class="form-group">
-	   <input  [formControl]="signupFormModalName" id="signupFormModalName" formControlName="signupFormModalName"   mdbInput mdbValidate type="text" id="defaultSubscriptionFormPassword" class="form-control rounded-0" placeholder="Nome">
+	   <input  [formControl]="signupFormModalName" id="signupFormModalName" formControlName="signupFormModalName"   mdbInput mdbValidate type="text" id="defaultSubscriptionFormPassword" class="form-control rounded-0" placeholder="Usuário">
 	   <div style="color: red;" *ngIf="f.signupFormModalName.touched && f.signupFormModalName.invalid" class="help-block">
 		<div style="color: red;" *ngIf="f.signupFormModalName.errors.required">Usuário é um campo requerido.</div>
 	</div>
@@ -63,7 +63,7 @@
 	</button>
 </div>
 	<div class="">   
-   <a type="button" class="btn btn-primary" href="/login" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+   <a type="button" class="btn btn-primary" (click)="voltar()" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
 		mdbWavesEffect>Voltar
 	</a>   
 	</div>
