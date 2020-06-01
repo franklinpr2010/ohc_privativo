@@ -12,9 +12,12 @@ import { Lote } from '@app/_models/lote';
 import { LoteService } from '@app/_services/lote.service';
 import {saveAs as importedSaveAs} from "file-saver";
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({ templateUrl: 'lote.component.html' })
 export class LoteComponent implements OnInit {
+
+
     loading = false;
     capitulos: Capitulo[];
     capitulosUsuario: Capitulo[];
@@ -24,6 +27,8 @@ export class LoteComponent implements OnInit {
     id: number;
     private sub: any;
     lotes: Lote[];
+
+
 
     constructor(private userService: UserService,
         private authenticationService :  AuthenticationService,
