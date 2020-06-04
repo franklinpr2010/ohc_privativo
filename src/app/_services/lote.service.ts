@@ -33,7 +33,8 @@ export class LoteService {
   let corsHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Access-Control-Allow-Origin': url
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST'
   });
   return this.http.get<Blob>(url,  {headers: corsHeaders, observe: 'response', responseType: 'blob' as 'json' })
 }

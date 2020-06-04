@@ -1,0 +1,9 @@
+{
+    "/wp-content/*": {
+        "target": "http://hermeticordercaibalion.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+
+    }
+}

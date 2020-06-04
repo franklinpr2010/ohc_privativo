@@ -18,10 +18,12 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist",
+            
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+           
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -75,7 +77,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ohc:build"
+            "browserTarget": "ohc:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
