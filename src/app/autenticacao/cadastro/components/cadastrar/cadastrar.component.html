@@ -43,7 +43,7 @@
 	</div>
 	<div class="form-group">
 	  <!-- Senha -->
-	  <input mask="(000)00000-0000"  formControlName="signupFormModalTelefone" [formControl]="signupFormModalTelefone" type="text" id="defaultSubscriptionFormEmail" class="form-control rounded-0" placeholder="Telefone">
+	  <input mask="(00)00000-0000"  formControlName="signupFormModalTelefone" [formControl]="signupFormModalTelefone" type="text" id="defaultSubscriptionFormEmail" class="form-control rounded-0" placeholder="Celular">
 	  <div *ngIf="f.signupFormModalTelefone.touched && f.signupFormModalTelefone.invalid" class="help-block">
 		<div style="color: red;" *ngIf="f.signupFormModalTelefone.errors.required">Telefone é um campo requerido.</div>
 	 </div>
